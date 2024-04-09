@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./deml.scss">
+	<title>Document</title>
+	<style id="scss">
+		@mixin card( $bg) {
+			background: $bg;
+		}
+
+		.container {
+			max-width: 1080px;
+			width: 100%;
+			margin-inline: auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 16px;
+
+			.card {
+				padding: 10px;
+				border: 1px solid #e9e9e9;
+				border-radius: 5px;
+				min-height: 250px;
+				display: grid;
+				place-items: center;
+			}
+
+			.card-1 {
+				@include card(yellow);
+			}
+
+			.card-2 {
+				@include card(lightblue);
+			}
+			.card-3 {
+				@include card(green);
+			}
+			.card-4 {
+				@include card(blue);
+			}
+			.card-5 {
+				@include card(pink);
+			}
+			.card-6 {
+				@include card(black);
+			}
+			.card-7 {
+				@include card(gold);
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="card-1 card">card1</div>
+		<div class="card-2 card">card2</div>
+		<div class="card-3 card">card3</div>
+		<div class="card-4 card">card4</div>
+		<div class="card-5 card">card5</div>
+		<div class="card-6 card">card6</div>
+		<div class="card-7 card">card7</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.12/sass.sync.min.js"></script>
+	<script>
+		// Get the SCSS code from the <style> tag
+		var scssCode = document.getElementById('scss').textContent;
+
+		// Compile SCSS to CSS
+		Sass.compile(scssCode, function (result) {
+			// Inject the compiled CSS into a <style> tag
+			var css = document.createElement('style');
+			css.textContent = result.text;
+			document.head.appendChild(css);
+		});
+	</script>
+</body>
+
+</html>
